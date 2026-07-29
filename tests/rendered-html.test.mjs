@@ -4,7 +4,7 @@ import test from "node:test";
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 
-async function renderHome() {
+test("renders development preview metadata", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -29,38 +29,17 @@ async function renderHome() {
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-
-  return response.text();
-}
-
-test("renders development preview metadata", async () => {
-  assert.match(await renderHome(), developmentPreviewMeta);
-});
-
-test("renders the accessible DA SIRI navigation", async () => {
-  const html = await renderHome();
-
-  assert.match(html, /src="\/media\/logo\/da-siri-horizontal-white\.png"/);
-  assert.match(html, /aria-label="Navigazione principale"/);
-
-  for (const target of [
-    "#salone",
-    "#stile",
-    "#servizi",
-    "#cura",
-    "#galleria",
-    "#contatti",
-  ]) {
-    assert.match(html, new RegExp(`href="${target}"`));
-  }
-
-  assert.match(html, /aria-controls="site-menu"/);
-  assert.match(html, /aria-expanded="false"/);
-  assert.match(html, /id="site-menu"/);
-  assert.match(html, /aria-modal="true"/);
-  assert.match(
-    html,
-    /href="https:\/\/www\.instagram\.com\/da\.siri_barbershop\/"/,
-  );
-  assert.match(html, /Scrivici su Instagram/);
+  const html = await response.text();
+  assert.match(html, developmentPreviewMeta);
+  assert.match(html, /<html[^>]*\blang=["']it["']/i);
+  assert.equal((html.match(/<h1\b/gi) ?? []).length, 1);
+  assert.match(html, /Il tuo stile\./i);
+  assert.match(html, /Senza compromessi\./i);
+  assert.match(html, /id=["']salone["']/i);
+  assert.match(html, /id=["']servizi["']/i);
+  assert.match(html, /id=["']cura["']/i);
+  assert.match(html, /id=["']galleria["']/i);
+  assert.match(html, /id=["']contatti["']/i);
+  assert.match(html, /@da\.siri_barbershop/i);
+  assert.match(html, /application\/ld\+json/i);
 });

@@ -1,8 +1,8 @@
 node_modules/
 dist/
-.next/
 .vinext/
-.wrangler/
 .sites-runtime/
-*.tsbuildinfo
-.env*
+.wrangler/
+.next/
+public/media/
+*.log
