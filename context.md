@@ -102,11 +102,26 @@ Questo documento sostituisce il vecchio contesto. La sessione precedente è stat
 - La pubblicazione precedente era stata avviata ma non risultava verificata online.
 - Dati ancora mancanti e da non inventare: indirizzo, telefono/WhatsApp, orari, listino prezzi e recensioni.
 
-## Aggiornamento repository — 29 luglio 2026
+## Aggiornamento repository GitHub — 29 luglio 2026
 
 - Repository ufficiale: `https://github.com/ergesttroplini97-ops/Da-siri-barbershop`
-- Il progetto è stato ricostruito come sito statico completo, senza dipendenze e pronto per deploy.
-- File principali: `index.html`, `styles.css`, `script.js`, `README.md`, `context.md` e cartella `assets/`.
-- Avvio locale: `python3 -m http.server 8080`, poi aprire `http://localhost:8080`.
-- Il sito utilizza esclusivamente gli asset ufficiali disponibili.
-- Restano da confermare e aggiungere: indirizzo, telefono/WhatsApp, orari e listino prezzi.
+- Visibilità: pubblica.
+- Branch operativo: `main`.
+- Permessi GitHub verificati: lettura, scrittura e amministrazione disponibili.
+- File di codice già caricati nella repository: `README.md`, `index.html`, `styles.css`, `script.js` e `context.md`.
+- Il sito presente nella repository è una versione statica senza processo di build obbligatorio; può essere avviato in locale con `python3 -m http.server 8080` e visualizzato su `http://localhost:8080`.
+- È stato preparato anche un archivio locale completo: `da-siri-barbershop-completo.zip`.
+- Gli asset fotografici ufficiali sono disponibili localmente, ma il connettore GitHub usato nella sessione non ha consentito il caricamento diretto dei file binari. La cartella `assets/` deve quindi essere caricata dal pacchetto ZIP oppure tramite Git/CLI prima del deploy definitivo.
+- Non dichiarare il sito completo online finché la repository non contiene gli asset richiesti e la resa visiva non è stata verificata dal browser.
+
+## Stato reale corrente
+
+1. Codice e documentazione: caricati su GitHub.
+2. `context.md`: aggiornato con repository, limiti e prossimi passi.
+3. Immagini ufficiali: incluse nel pacchetto locale, da sincronizzare nella cartella `assets/` della repository.
+4. Deploy pubblico: non ancora verificato in questa fase.
+5. Prossima azione: caricare `assets/`, verificare i percorsi nel codice, testare il sito e poi pubblicare su Vercel.
+
+## Istruzione di continuità
+
+Quando una nuova sessione riprende il lavoro, deve prima leggere questo file e controllare lo stato effettivo della repository. Non ricreare il progetto da zero e non sostituire gli asset ufficiali con immagini stock. Correggere soltanto ciò che manca, completare il caricamento degli asset, verificare il sito nel browser e procedere al deploy solo dopo un controllo reale.
