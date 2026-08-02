@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { siteUrl } from "./site-url";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -8,7 +9,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://da-siri-barbershop.ergest-troplini97.chatgpt.site"),
+  metadataBase: new URL(siteUrl),
   title: "DA SIRI Barbershop | Il tuo stile, senza compromessi",
   description:
     "DA SIRI Barbershop: precisione, carattere e attenzione ai dettagli. Scopri il salone e contattaci su Instagram.",

@@ -4,5 +4,7 @@ dist/
 .sites-runtime/
 .wrangler/
 .next/
+next-env.d.ts
+.vercel/
 public/media/
 *.log

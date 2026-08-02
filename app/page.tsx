@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { GalleryLightbox } from "./GalleryLightbox";
 import { SiteHeader } from "./SiteHeader";
+import { siteUrl } from "./site-url";
 
 const instagramUrl = "https://www.instagram.com/da.siri_barbershop/";
 
@@ -54,7 +55,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "HairSalon",
     name: "DA SIRI Barbershop",
-    url: "https://da-siri-barbershop.ergest-troplini97.chatgpt.site",
+    url: siteUrl,
     sameAs: [instagramUrl],
     foundingDate: "2024-01-26",
     vatID: "IT13305780960",
