@@ -52,8 +52,8 @@ Cosa è stato aggiunto per ottenere questo:
 3. Nella schermata di import lasciare tutto ai valori rilevati: `vercel.json`
    imposta già Framework `Next.js`, Install `npm ci`, Build `npm run build:vercel`.
    Non serve alcuna Root Directory personalizzata.
-4. **Settings → General → Node.js Version**: `22.x`
-   (`package.json` richiede `>=22.13.0`).
+4. **Settings → General → Node.js Version**: `22.x` o superiore
+   (`package.json` richiede `>=22.13.0`; il progetto in produzione usa `24.x`).
 5. **Settings → Environment Variables** (Production + Preview), opzionale ma
    consigliato quando Vercel diventa il sito principale:
 
@@ -143,5 +143,5 @@ con quelli Next. Finché entrambi servono, lasciare tutto com'è.
 | `Cannot find module 'cloudflare:workers'` | Vercel sta usando `tsconfig.json` invece di `tsconfig.vercel.json` | Verificare che `next.config.ts` contenga il ramo `process.env.VERCEL` e che la variabile di sistema `VERCEL` non sia stata sovrascritta |
 | Build fallisce su `scripts/build-verified.sh` (`requires GNU timeout`/`flock`) | Vercel sta eseguendo `npm run build` invece di `npm run build:vercel` | Controllare che `vercel.json` sia nella root e che in Settings → Build & Development il Build Command non sia stato sovrascritto a mano |
 | Sito online ma senza immagini / 404 su `/media/...` | `materialize-assets.mjs` non eseguito | Il Build Command deve essere `npm run build:vercel`, non `next build` |
-| `engine "node" is incompatible` | Node < 22.13 | Settings → General → Node.js Version = `22.x` |
+| `engine "node" is incompatible` | Node < 22.13 | Settings → General → Node.js Version = `22.x` o superiore |
 | Open Graph o canonical con il dominio sbagliato | `NEXT_PUBLIC_SITE_URL` mancante o non allineata | Impostare la variabile e rifare il deploy |
